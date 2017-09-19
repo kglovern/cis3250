@@ -4,4 +4,5 @@ Mark Ciobotaru
 Andrew Barsoum
 Jovana Kusic
 Chigozie Davis
+Nicholas Skoretz
 
