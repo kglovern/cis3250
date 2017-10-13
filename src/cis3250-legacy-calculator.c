@@ -147,9 +147,10 @@ return 0;
 }
 
 /*Kevin's Section */
- /**
-  * TODO: Header
-  */
+
+/**Prints a message surrounded by '=' as a banner header
+*@param header The message to be printed
+**/
 void printMenuHeader ( char *header ) {
     int messageLen = strlen ( header ) + 2;
     int i;
@@ -165,8 +166,7 @@ void printMenuHeader ( char *header ) {
     printf ("\n");
 }
 
-int main ( int argc, char *argv[] )
-{
+int main ( int argc, char *argv[] ) {
     float a, b, c;
     float r1, r2;
     char sym;
@@ -179,7 +179,7 @@ int main ( int argc, char *argv[] )
         printf ("3.Acountant Calculator\n");
         printf ("4.Read Help and Notice\n");
         printf ("0.Exit\n");
-        menu = input ("Select Menu: ");  //input main menu
+        menu = input ("Select Menu: "); //input main menu
         system ("clear");
 
         if ( menu == 1 ) {
@@ -190,7 +190,7 @@ int main ( int argc, char *argv[] )
                 printf ("3.MULTIPLY\n");
                 printf ("4.DIVIDE\n");
                 printf ("0.BACK\n");
-                rmenu = input ("Select Menu: ");  //input regular  menu
+                rmenu = input ("Select Menu: "); //input regular  menu
                 system ("clear");
 
                 if ( rmenu == 1 ) {
@@ -244,7 +244,6 @@ int main ( int argc, char *argv[] )
             printf ("11.Conversion functions\n");
             printf ("0.Back\n");
             smenu = input ("Select Menu: ");
-            
             system ("clear");
 
             if ( smenu == 1 ) {
@@ -316,38 +315,44 @@ int main ( int argc, char *argv[] )
             }
 
 
-/*************STOP HERE***********/
-    if(smenu==10){
-        int operation_number=0;
-               printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
-       printf("\n\tEnter an operation command:");
-       scanf("%d",&operation_number);
+            if ( smenu == 10 ) {
+                int operation_number=0;
+                
+                printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
+                printf("\n\tEnter an operation command:");
+                scanf("%d",&operation_number);
 
-      switch(operation_number){
-       case 1: matrix_sum();break;
-       case 2: matrix_transpose();break;
-       case 3: matrix_product();break;
-       }
-    }
+                switch ( operation_number ) {
+                    case 1: 
+                        matrix_sum ();
+                        break;
+                    case 2: 
+                        matrix_transpose ();
+                        break;
+                    case 3: 
+                        matrix_product ();
+                        break;
+                }
+            }
 
-    if(smenu==11){
-        int operation_number=0;
+            if ( smenu == 11 ) {
+                int operation_number=0;
+
                 printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
-        printf("\n\n\n\t\tPlease choose an operation number:");
-        scanf("%d",&operation_number);
+                printf("\n\n\n\t\tPlease choose an operation number:");
+                scanf("%d",&operation_number);
 
-        switch(operation_number){
-            case 1: temp();break;
-            case 2: time();break;
-        }
-        break;
-
-    }
-
-
-
-}while(smenu!=0);
-}
+                switch(operation_number){
+                    case 1: 
+                        temp();
+                        break;
+                    case 2: 
+                        time();
+                        break;
+                }
+            }
+        } while ( smenu != 0 );
+    }   
 /********ACTUALLY END HERE ***********/
 if(menu==3){
 
