@@ -166,6 +166,57 @@ void printMenuHeader ( char *header ) {
     printf ("\n");
 }
 
+/**
+ *
+ *
+ */
+void getUserInput ( float *firstOp, float *secondOp ) {
+    *firstOp = input ("Enter value of 1st operand: ");
+    *secondOp = input ("Enter value of 2nd operand: ");
+}
+
+/**Runs the regular calculator menu and branches based on user input
+ **/
+void runRegCalc () {
+    int choice = 0;
+    float operandOne = 0, operandTwo = 0, result = 0;
+
+    do {
+        printMenuHeader ("Regular Calculator Menu");
+        printf ("1.PLUS\n");
+        printf ("2.MINUS\n");
+        printf ("3.MULTIPLY\n");
+        printf ("4.DIVIDE\n");
+        printf ("0.BACK\n");
+
+        choice = input ("Select Menu: ");
+        
+        system ("clear");
+
+        if ( choice == 1 ) { // Addition
+            getUserInput ( &operandOne, &operandTwo);
+            result = plus ( operandOne, operandTwo );
+            printf ("\n");
+            print ( "sum of", "plus", operandOne, operandTwo, result );
+        } else if ( choice == 2 ) { // Subtraction 
+            getUserInput ( &operandOne, &operandTwo);
+            result = minus ( operandOne, operandTwo );
+            printf ("\n");
+            print ( "result of", "minus", operandOne, operandTwo, result );
+        } else if ( choice == 3 ) { // Multiplication
+            getUserInput ( &operandOne, &operandTwo);
+            result = mult ( operandOne, operandTwo );
+            printf ("\n");
+            print ( "result of", "x", operandOne, operandTwo, result );
+        } else if ( choice == 4 ) { // Division
+            getUserInput ( &operandOne, &operandTwo);
+            result = divind ( operandOne, operandTwo );
+            printf ("\n");
+            print ( "result", "/", operandOne, operandTwo, result );
+        }
+    } while ( choice != 0 );
+}
+
 int main ( int argc, char *argv[] ) {
     float a, b, c;
     float r1, r2;
@@ -179,180 +230,138 @@ int main ( int argc, char *argv[] ) {
         printf ("3.Acountant Calculator\n");
         printf ("4.Read Help and Notice\n");
         printf ("0.Exit\n");
-        menu = input ("Select Menu: "); //input main menu
+        menu = input ("Select Menu: "); // input main menu
         system ("clear");
 
         if ( menu == 1 ) {
+            runRegCalc ();
+        }
+
+        if ( menu == 2 ) {
             do {
-                printMenuHeader ("Regular Calculator Menu");
-                printf ("1.PLUS\n");
-                printf ("2.MINUS\n");
-                printf ("3.MULTIPLY\n");
-                printf ("4.DIVIDE\n");
-                printf ("0.BACK\n");
-                rmenu = input ("Select Menu: "); //input regular  menu
+                printMenuHeader ("Scientific Calculator Menu");
+                printf ("1.Power function (x^y)\n");
+                printf ("2.Factorial Series (x!)\n");
+                printf ("3.Fibonacci Series \n");
+                printf ("4.Sine (Sin x)\n");
+                printf ("5.Cosine (cos x)\n");
+                printf ("6.Tangent (Tan x)\n");
+                printf ("7.Cosec (cosec x)\n");
+                printf ("8.Sec (sec x)\n");
+                printf ("9.Cot (cot x)\n");
+                printf ("10.Matrix functions\n");
+                printf ("11.Conversion functions\n");
+                printf ("0.Back\n");
+                smenu = input ("Select Menu: ");
                 system ("clear");
 
-                if ( rmenu == 1 ) {
-                    a = input ("Enter value 1 st: ");
-                    b = input ("Enter value 2 nd: ");
-                    c = plus ( a, b );
+                if ( smenu == 1 ) {
+                    a = input ("Enter base(x): ");
+                    b = input ("Enter power(y): ");
+                    c = powerfn ( a, b );
                     printf ("\n");
-                    print ( "sum of", "plus", a, b, c );
+                    print ( "result of", "^", a, b, c );
                 }
 
-                if ( rmenu == 2 ) {
-                    a = input ("Enter value 1 st: ");
-                    b = input ("Enter value 2 nd: ");
-                    c = minus ( a, b );
+                if ( smenu == 2 ) {
+                    a = input ("Enter numbers of term: ");
+                    c = fact (a);
                     printf ("\n");
-                    print ( "result of", "minus", a, b, c );
+                    spprint ( "Factorial of", "!" , a, c );
                 }
 
-                if ( rmenu == 3 ) {
-                    a = input ("Enter value 1 st: ");
-                    b = input ("Enter value 2 nd: ");
-                    c = mult ( a, b );
+                if ( smenu == 3 ) {
+                    a = input ("Enter numbers of term: ");
+                    c = fib (a);
                     printf ("\n");
-                    print ( "result of", "x", a, b, c );
+                    spprint ( "Fibonacci of", " ", a, c );
                 }
 
-                if ( rmenu == 4 ) {
-                    a = input ("Enter value 1 st: ");
-                    b = input ("Enter value 2 nd: ");
-                    c = divind ( a, b );
+                if ( smenu == 4 ) {
+                    a = input ("Enter your value: ");
+                    c = sine (a);
                     printf ("\n");
-                    print ( "result", "/", a, b, c );
+                    spprintf ( "Sine of", " ", a, c );
                 }
 
-        } while ( rmenu != 0 );
-    }
-
-    if ( menu == 2 ) {
-        do {
-            printMenuHeader ("Scientific Calculator Menu");
-            printf ("1.Power function (x^y)\n");
-            printf ("2.Factorial Series (x!)\n");
-            printf ("3.Fibonacci Series \n");
-            printf ("4.Sine (Sin x)\n");
-            printf ("5.Cosine (cos x)\n");
-            printf ("6.Tangent (Tan x)\n");
-            printf ("7.Cosec (cosec x)\n");
-            printf ("8.Sec (sec x)\n");
-            printf ("9.Cot (cot x)\n");
-            printf ("10.Matrix functions\n");
-            printf ("11.Conversion functions\n");
-            printf ("0.Back\n");
-            smenu = input ("Select Menu: ");
-            system ("clear");
-
-            if ( smenu == 1 ) {
-                a = input ("Enter base(x): ");
-                b = input ("Enter power(y): ");
-                c = powerfn ( a, b );
-                printf ("\n");
-                print ( "result of", "^", a, b, c );
-            }
-
-            if ( smenu == 2 ) {
-                a = input ("Enter numbers of term: ");
-                c = fact (a);
-                printf ("\n");
-                spprint ( "Factorial of", "!" , a, c );
-            }
-
-            if ( smenu == 3 ) {
-                a = input ("Enter numbers of term: ");
-                c = fib (a);
-                printf ("\n");
-                spprint ( "Fibonacci of", " ", a, c );
-            }
-
-            if ( smenu == 4 ) {
-                a = input ("Enter your value: ");
-                c = sine (a);
-                printf ("\n");
-                spprintf ( "Sine of", " ", a, c );
-            }
-
-            if ( smenu == 5 ) {
-                a = input ("Enter your value: ");
-                c = cosine (a);
-                printf ("\n");
-                spprintf ( "Cosine of", " ", a, c );
-            }
-
-            if ( smenu == 6 ) {
-                a = input ("Enter your value: ");
-                r1 = sine (a);
-                r2 = cosine (a);
-                c = r1 / r2;
-                printf ("\n");
-                spprintf ( "Tangent of", " ", a, c );
-            }
-
-            if ( smenu == 7 ) {
-                a = input ("Enter your value: ");
-                c = sine (a);
-                printf ("\n");
-                spprintf ( "Cosec of", " ", a, (1/c) );
-            }
-
-            if ( smenu == 5 ) {
-                a = input ("Enter your value: ");
-                c = cosine (a);
-                printf ("\n");
-                spprintf ( "Sec of", " ", a, (1/c) );
-            }
-
-            if ( smenu == 8 ) {
-                a = input ("Enter your value: ");
-                r1 = sine (a);
-                r2 = cosine (a);
-                c = r1 / r2;
-                printf ("\n");
-                spprintf ( "Cot of", " ", a, (1/c) );
-            }
-
-
-            if ( smenu == 10 ) {
-                int operation_number=0;
-                
-                printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
-                printf("\n\tEnter an operation command:");
-                scanf("%d",&operation_number);
-
-                switch ( operation_number ) {
-                    case 1: 
-                        matrix_sum ();
-                        break;
-                    case 2: 
-                        matrix_transpose ();
-                        break;
-                    case 3: 
-                        matrix_product ();
-                        break;
+                if ( smenu == 5 ) {
+                    a = input ("Enter your value: ");
+                    c = cosine (a);
+                    printf ("\n");
+                    spprintf ( "Cosine of", " ", a, c );
                 }
-            }
 
-            if ( smenu == 11 ) {
-                int operation_number=0;
-
-                printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
-                printf("\n\n\n\t\tPlease choose an operation number:");
-                scanf("%d",&operation_number);
-
-                switch(operation_number){
-                    case 1: 
-                        temp();
-                        break;
-                    case 2: 
-                        time();
-                        break;
+                if ( smenu == 6 ) {
+                    a = input ("Enter your value: ");
+                    r1 = sine (a);
+                    r2 = cosine (a);
+                    c = r1 / r2;
+                    printf ("\n");
+                    spprintf ( "Tangent of", " ", a, c );
                 }
-            }
-        } while ( smenu != 0 );
-    }   
+
+                if ( smenu == 7 ) {
+                    a = input ("Enter your value: ");
+                    c = sine (a);
+                    printf ("\n");
+                    spprintf ( "Cosec of", " ", a, (1/c) );
+                }
+
+                if ( smenu == 5 ) {
+                    a = input ("Enter your value: ");
+                    c = cosine (a);
+                    printf ("\n");
+                    spprintf ( "Sec of", " ", a, (1/c) );
+                }
+
+                if ( smenu == 8 ) {
+                    a = input ("Enter your value: ");
+                    r1 = sine (a);
+                    r2 = cosine (a);
+                    c = r1 / r2;
+                    printf ("\n");
+                    spprintf ( "Cot of", " ", a, (1/c) );
+                }
+
+
+                if ( smenu == 10 ) {
+                    int operation_number=0;
+                    
+                    printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
+                    printf("\n\tEnter an operation command:");
+                    scanf("%d",&operation_number);
+
+                    switch ( operation_number ) {
+                        case 1: 
+                            matrix_sum ();
+                            break;
+                        case 2: 
+                            matrix_transpose ();
+                            break;
+                        case 3: 
+                            matrix_product ();
+                            break;
+                    }
+                }
+
+                if ( smenu == 11 ) {
+                    int operation_number=0;
+
+                    printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
+                    printf("\n\n\n\t\tPlease choose an operation number:");
+                    scanf("%d",&operation_number);
+
+                    switch(operation_number){
+                        case 1: 
+                            temp();
+                            break;
+                        case 2: 
+                            time();
+                            break;
+                    }
+                }
+            } while ( smenu != 0 );
+        }   
 /********ACTUALLY END HERE ***********/
 if(menu==3){
 
