@@ -1,149 +1,304 @@
+// CHANGED: October 14 by Maddie. Changed order of #includes for clarity.
+// CHANGED: October 14 by Maddie. All pointer declarations of form "type *var"
+// CHANGED: October 14 by Maddie. Added doxygen style comments above each function.
+// CHANGED: October 14 by Maddie. Moved all brackets to same line for functions.
+// CHANGED: October 14 by Maddie. All function parameters of form: "( type var )"
+// CHANGED: October 14 by Maddie. Initialized all floats to 0.0, ints to 0
+// CHANGED: October 14 by Maddie. Changed all tab indentations to 4 sapces.
+// CHANGED: October 14 by Maddie. Fixed all indentation according to coding convention.
+// CHANGED: October 14 by Maddie. Fixed all if statements/for loops/while loops to meet coding convention
+// CHANGED: October 14 by Maddie. Changed printf/scanf parameters to format "scanf("%f", &key)"
+// CHANGED: October 14 by Maddie. Changed calculations to format: "result = multer * multin;"
+// CHANGED: October 14 by Maddie. Changed comparisons to format: "var == 0;
+// CHANGED: October 14 by Maddie. Moved variable initializations to their own lines
+
+// CHANGED: October 14 by Maddie. CHANGED VARIABLE NAME inName to inName (camel case).
+// CHANGED: October 14 by Maddie. CHANGED VARIABLE NAME addIn to addIn (camel case).
+// CHANGED: October 14 by Maddie. CHANGED VARIABLE NAME minin to minIn (camel case).
+// CHANGED: October 14 by Maddie. CHANGED VARIABLE NAME multin to multIn (camel case).
+// CHANGED: October 14 by Maddie. CHANGED VARIABLE NAME dividin to dividIn (camel case).
+
+// CHANGED: October 14 by Maddie. CHANGED FUNCTION NAME Aryprint to aryPrint (camel case).
+
 #include <stdio.h>
 #include <stdlib.h>
-#define PI 3.1415926535897932384626433832795
+#include <string.h> 
+
 #include "factorial.h"
 #include "matrices.h"
 #include "powerfunction.h"
 #include "conversions.h"
-#include<string.h>
 
-FILE*help;
+#define PI 3.1415926535897932384626433832795
 
+FILE *help;
 
-float input(char*inname)
-{
-	float key;
-	char temp[9999];
+/**
+* Function to receive user input
+*
+* @param char * variable "inName" (string prompt to print for user)
+* @return float value of "key" variable from user
+*/
+float input( char *inName ) {
+   
+    float key = 0.0;
+    char temp[9999];
+
+    do {
+
+        printf("%s", inName);
+
+        if( !scanf("%f", &key) ) {
+            scanf("%s", &temp); //recieve temp
+            printf("Please try again!\n");
+        } else {
+            return key;
+    	}
+
+	} while( 1 );	
+
+}
+
+/**
+* Function to get array input from user.
+*
+* @param char * variable "inName" (string prompt to print for user)
+* @param int variable "num" (for fibonacci sequence)
+* @return float value of "key" variable from user
+*/
+float inputAry( char *inName, int num ) {
 	
-	do{
-	printf("%s",inname);
-	 if(!scanf("%f",&key)){
-		scanf("%s",&temp);//recieve temp
-	      	printf("Please try again!\n");
-	}
-	else{
-		return key;
-	}
-	}while(1);	 
-}
-
-float inputAry(char*inname,int num)
-{
-	float key;
+    float key = 0.0;
 	char temp[9999];
 
-	do{
-	printf("%s[%d]: ",inname,num+1);
-	 if(!scanf("%f",&key)){
-		scanf("%s",&temp);
-	      	printf("Please try again!\n");
-	}
-	else{
-		return key;
-	}
-	}while(1);	 
+    do {
+
+        printf("%s[%d]: ", inName, num+1);
+
+        if( !scanf("%f", &key) ) {
+            scanf("%s", &temp);
+            printf("Please try again!\n");
+        } else {
+            return key;
+        }
+
+    } while( 1 );	
+
 }
 
-float plus(float adder,float addin)
-{
-	float result;
-	result=adder+addin;
+/**
+* Function to add 2 float values.
+*
+* @param float variable "adder" to be added with "adder"
+* @param float variable "addIn" to be added with "adder"
+* @return float value result of addition
+*/
+float plus( float adder, float addIn ) {
+
+	float result = 0.0;
+	result = adder + addIn;
 	return result;
+
 }
 
-float minus(float miner,float minin)
-{
-	float result;
-	result=miner-minin;
+/**
+* Function to subtract 2 float values.
+*
+* @param float variable "miner" to subtract "minIn" from
+* @param float variable "minIn" to subtract from "miner"
+* @return float value result of subtraction
+*/
+float minus( float miner, float minIn ) {
+
+	float result = 0.0;
+	result = miner - minIn;
 	return result;
+
 }
 
-float mult(float multer,float multin)
-{
-	float result;
-	result=multer*multin;
+/**
+* Function to multiply 2 float values.
+*
+* @param float variable "multer" to multiply with "multIn"
+* @param float variable "multIn" to multiply with "multer"
+* @return float value result of multiplication
+*/
+float mult( float multer, float multin ) {
+
+	float result = 0.0;
+	result = multer * multin;
 	return result;
+
 }
 
-float divind(float divider,float dividin)
-{
-	float result;
-	result=divider/dividin;
+/**
+* Function to divide 2 float values.
+*
+* @param float variable "divider" to divided by with "dividIn"
+* @param float variable "dividIn" to divide "divider" by
+* @return float value result of division
+*/
+float divind(float divider,float dividIn) {
+
+	float result = 0.0;
+	result = divider/dividIn;
 	return result;
+
 }
 
-int factorial(int term)
-{
+/**
+* Function to calculate factorial
+*
+* @param integer "term" to calculate factorial of
+* @return integer factorial result (once finished recursively calling function) 
+*/
+int factorial( int term ) {
 
-	if(term==0){
-		return 1;
-	}
+    if( term == 0 ) {
+        return 1;
+    }
 
-	return term*factorial(term-1);
+	return term * factorial( term-1 );
+
 }
 
-int fib(int term)
-{
-	if(term==1){
+/**
+* Function to calculate fibonacci sequence
+*
+* @param integer "term" to calculate fibonacci sequence of
+* @return integer fibonacci sequence result (once finished recursively calling function) 
+*/
+int fib( int term ) {
+	
+    if( term == 1 ) {
 		return 0;
 	}
-	if(term==2){
+
+	if( term == 2 ) {
 		return 1;
 	}
-	return fib(term-1)+fib(term-2);
+
+	return fib( term-1 ) + fib( term-2 );
+
 }
 
-float power(float base,int pow)
-{
-	int i;
-	float mem=1;
-	for(i=0;i<pow;i++){
-		mem*=base;
+/**
+* Function to calculate the nth power of a given number
+*
+* @param float value base (base of exponent calculation)
+* @param integer value pow (power to raise base to)
+* @return float base to the nth power
+*/
+float power( float base, int pow ) {
+
+	int i = 0;
+	float mem = 1.0;
+
+	for( i=0; i<pow; i++ ) {
+		mem *= base;
 	}
+
 	return mem;
+
 }
 
-float sine(float radius)
-{
-	float val,sin;
-		val=radius*(PI/180);
-		sin=val-(power(val,3)/factorial(3))+(power(val,5)/factorial(5))-(power(val,7)/factorial(7));
-	return sin;
-}
-
-float cosine(float radius)
-{
-	float val,cos;
-		val=radius*(PI/180);
-		cos=1-(power(val,2)/factorial(2))+(power(val,4)/factorial(4))-(power(val,6)/factorial(6));
-	return cos;
-}
-
-int spprint(char*screen,char*sym,int ini,int res)
-{
-	printf("%s %d%s = %d\n",screen,ini,sym,res);
+/**
+* Function to calculate sine value of given float
+*
+* @param float radius to calculate sine of
+* @return float calculated sine value of given radius
+*/
+float sine( float radius ) {
 	
-return 0;
+    float val = 0.0;
+    float sin = 0.0;
+	
+    val = radius * (PI/180);
+	sin = val - (power( val, 3 ) / factorial(3)) + (power( val, 5 ) / factorial(5)) - (power( val, 7 ) / factorial(7));
+	
+    return sin;
+
 }
 
-float spprintf(char*screen,char*sym,float ini,float res)
-{
-	printf("%s %.4f%s = %.4f\n",screen,ini,sym,res);
+/**
+* Function to calculate cosine value of given float
+*
+* @param float radius to calculate cosine of
+* @return float calculated cosine value of given radius
+*/
+float cosine( float radius ) {
+	
+    float val = 0.0;
+    float cos = 0.0;
 
-return 0;
+	val = radius * (PI/180);
+	cos = 1 - (power( val, 2 ) / factorial(2)) + (power( val, 4 ) / factorial(4)) - (power( val, 6 ) / factorial(6));
+	
+    return cos;
+
 }
 
-float print(char*screen,char*sym,float ini,float upt,float res)
-{
-	printf("%s %.4f %s %.4f = %.4f\n",screen,ini,sym,upt,res);
+/**
+* Function to print formatted output of caluculations where input/result are integers
+*
+* @param char * screen :: to print before result given
+* @param char * sym :: calculation symbol to print
+* @param int ini :: initial value being calculated
+* @param int res :: value of result of calculation
+* @return integer zero
+*/
+int spprint( char *screen, char *sym, int ini, int res ) {
+	
+    printf("%s %d%s = %d\n", screen, ini, sym, res);
+    return 0;
 
-return 0;
 }
-float Aryprint(char*screen,float ans)
-{
-	printf("%s : %.4f\n",screen,ans);
 
-return 0;
+/**
+* Function to print formatted output of caluculations where input/result are floats
+*
+* @param char * screen :: to print before result given
+* @param char * sym :: calculation symbol to print
+* @param float ini :: initial value being calculated
+* @param float res :: value of result of calculation
+* @return float zero
+*/
+float spprintf( char *screen, char *sym, float ini, float res ) {
+	
+    printf("%s %.4f%s = %.4f\n", screen, ini, sym, res);
+    return 0;
+
+}
+
+/**
+* Function to print formatted output of regular calculator menu calculations
+*
+* @param char * screen :: to print before result given
+* @param char * sym :: calculation symbol to print
+* @param float ini :: initial value being calculated
+* @param float ini :: initial upt being calculated
+* @param float res :: value of result of calculation
+* @return float zero
+*/
+float print( char *screen, char *sym, float ini, float upt, float res) {
+
+	printf("%s %.4f %s %.4f = %.4f\n", screen, ini, sym, upt, res);
+    return 0;
+
+}
+
+/**
+* Function to print formatted output of accounting calculator menu calculations
+*
+* @param char * screen :: to print before result given
+* @param float ans :: value of answer of the calculation
+* @return float zero
+*/
+float aryPrint( char *screen, float ans ) {
+
+	printf("%s : %.4f\n", screen, ans);
+    return 0;
+    
 }
 
 
@@ -451,27 +606,27 @@ else{
 
 		if(amenu==1){
 			printf("\n");
-			Aryprint("Max is",max);
+			aryPrint("Max is",max);
 		}
 
 		if(amenu==2){
 			printf("\n");
-			Aryprint("Min is",min);
+			aryPrint("Min is",min);
 		}
 
 		if(amenu==3){
 			printf("\n");
-			Aryprint("X-bar is",x_bar);
+			aryPrint("X-bar is",x_bar);
 		}
 
 		if(amenu==4){
 			printf("\n");
-			Aryprint("Range is",max-min);
+			aryPrint("Range is",max-min);
 		}
 
 		if(amenu==5){
 			printf("\n");
-			Aryprint("Med is",med);
+			aryPrint("Med is",med);
 		}
 
 		if(amenu==6){
