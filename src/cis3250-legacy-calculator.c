@@ -1,15 +1,19 @@
+/**
+* 
+* MADDIE'S CHANGES BEGIN
+*
+*/
+
 // CHANGED: October 14 by Maddie. Changed order of #includes for clarity.
 // CHANGED: October 14 by Maddie. All pointer declarations of form "type *var"
 // CHANGED: October 14 by Maddie. Added doxygen style comments above each function.
 // CHANGED: October 14 by Maddie. Moved all brackets to same line for functions.
 // CHANGED: October 14 by Maddie. All function parameters of form: "( type var )"
 // CHANGED: October 14 by Maddie. Initialized all floats to 0.0, ints to 0
-// CHANGED: October 14 by Maddie. Changed all tab indentations to 4 sapces.
-// CHANGED: October 14 by Maddie. Fixed all indentation according to coding convention.
-// CHANGED: October 14 by Maddie. Fixed all if statements/for loops/while loops to meet coding convention
+// CHANGED: October 14 by Maddie. Fixed all indentation (4 spaces)/loops/if statements to coding convention.
 // CHANGED: October 14 by Maddie. Changed printf/scanf parameters to format "scanf("%f", &key)"
 // CHANGED: October 14 by Maddie. Changed calculations to format: "result = multer * multin;"
-// CHANGED: October 14 by Maddie. Changed comparisons to format: "var == 0;
+// CHANGED: October 14 by Maddie. Changed comparisons to format: "var == 0"
 // CHANGED: October 14 by Maddie. Moved variable initializations to their own lines
 
 // CHANGED: October 14 by Maddie. CHANGED VARIABLE NAME inName to inName (camel case).
@@ -300,7 +304,11 @@ float aryPrint( char *screen, float ans ) {
     return 0;
     
 }
-
+/**
+* 
+* MADDIE'S CHANGES END
+*
+*/
 
 
 int main(int argc,char*argv[])
@@ -665,4 +673,6 @@ else{
 
 return 0;
 }
+
+
 
