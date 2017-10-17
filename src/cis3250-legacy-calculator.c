@@ -305,110 +305,110 @@ int main(int argc,char*argv[]){
 										printf("Tangent failed.\n");
 								}
 
-								if(smenu==7){
-										a=input("Enter your value: ");
-										c=sine(a);
-										printf("\n");
-										spprintf("Cosec of"," ",a,1/c);
-								} else{
-										printf("Cosec failed.\n");
-								}
+		if(smenu==7){
+			a=input("Enter your value: ");
+			c=sine(a);
+			printf("\n");
+			spprintf("Cosec of"," ",a,1/c);
+			} else{
+			printf("Cosec failed.\n");
+		}
 
-								if(smenu==8){
-										a=input("Enter your value: ");
-										c=cosine(a);
-										printf("\n");
-										spprintf("Sec of"," ",a,1/c);
-								} else{
-										printf("Sec failed.\n");
-								}
+		if(smenu==8){
+			a=input("Enter your value: ");
+			c=cosine(a);
+			printf("\n");
+			spprintf("Sec of"," ",a,1/c);
+			} else{
+			printf("Sec failed.\n");
+		}
 
-								if(smenu==9){
-										a=input("Enter your value: ");
-										r1=sine(a);
-										r2=cosine(a);
-										c=r1/r2;
-										printf("\n");
-										spprintf("Cot of"," ",a,1/c);
-								} else{
-										printf("Cot failed.\n");
-								}
+		if(smenu==9){
+			a=input("Enter your value: ");
+			r1=sine(a);
+			r2=cosine(a);
+			c=r1/r2;
+			printf("\n");
+			spprintf("Cot of"," ",a,1/c);
+			} else{
+			printf("Cot failed.\n");
+		}
 
-								if(smenu==10){
-										int operation_number=0;
-										printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
-										printf("\n\tEnter an operation command:");
-										scanf("%d",&operation_number);
+		if(smenu==10){
+			int operation_number=0;
+			printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
+			printf("\n\tEnter an operation command:");
+			scanf("%d",&operation_number);
 
-										switch(operation_number){
-												case 1:
-												  matrix_sum();
-												  break;
+			switch(operation_number){
+				case 1:
+					matrix_sum();
+				  break;
 
-												case 2:
-												  matrix_transpose();
-												  break;
+				case 2:
+				  matrix_transpose();
+				  break;
 
-												case 3:
-													matrix_product();
-													break;
+				case 3:
+					matrix_product();
+					break;
 
-												default:
-													break;
-										}
-								} else{
-										printf("Matrix operation failed.\n");
-								}
+				default:
+					break;
+			}
+		} else{
+		printf("Matrix operation failed.\n");
+		}
 
-								if(smenu==11){
-										int operation_number=0;
-										printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
-										printf("\n\n\n\t\tPlease choose an operation number:");
-										scanf("%d",&operation_number);
+		if(smenu==11){
+			int operation_number=0;
+			printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
+			printf("\n\n\n\t\tPlease choose an operation number:");
+			scanf("%d",&operation_number);
 
-										switch(operation_number){
-												case 1:
-													temp();
-													break;
+			switch(operation_number){
+				case 1:
+					temp();
+					break;
 
-												case 2:
-													time();
-													break;
+				case 2:
+					time();
+					break;
 
-												default:
-													break;
-												}
-												break;
-								} else{
-										printf("Converstion failed.\n");
-								}
+				default:
+					break;
+			}
+					break;
+		} else{
+		printf("Converstion failed.\n");
+		}
 
-						} while(smenu!=0);
-				} else{
-						printf("Scientific calculator failed to start.\n");
-				}
+		} while(smenu!=0);
+	} else{
+		printf("Scientific calculator failed to start.\n");
+	}
 
-				if(menu==3){
+	if(menu==3){
 
-						warp:
+	warp:
 
-						//system("clear");
-						printf("\n===========================\n");
-						printf("Accountant Calculator Menu\n");
-						printf("===========================\n");
-						printf("Please set value first\n");
-						printf("\n");
+	//system("clear");
+	printf("\n===========================\n");
+	printf("Accountant Calculator Menu\n");
+	printf("===========================\n");
+	printf("Please set value first\n");
+	printf("\n");
 
-						int n = 0;
-						int i = 0;
-						int j = 0;
-						int amenu = 0;
+	int n = 0;
+	int i = 0;
+	int j = 0;
+	int amenu = 0;
 
-						float rest = 0.00;
-						float max = 0.00;
-						float min = 0.00;
-						float x_bar = 0;
-						float sum=0;
+	float rest = 0.00;
+	float max = 0.00;
+	float min = 0.00;
+	float x_bar = 0;
+	float sum=0;
 
 						float med = 0.00;
 						//float mod = 0.00;
