@@ -226,3 +226,6 @@ void matrix_transpose () {
     }
 }
 
+/**************************************
+ * End of modification Nicholas Skoretz
+ **************************************/

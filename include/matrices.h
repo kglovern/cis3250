@@ -49,3 +49,8 @@ void matrix_product ();
 void matrix_transpose ();
 
 #endif
+
+/**************************************
+ * End of modification Nicholas Skoretz
+ **************************************/
+
