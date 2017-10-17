@@ -252,6 +252,8 @@ void matrixMenu () {
         case 3: 
             matrix_product ();
             break;
+        default:
+            break;
     }
 
 }
@@ -274,6 +276,8 @@ void conversionMenu () {
             break;
         case 2: 
             time ();
+            break;
+        default:
             break;
     }
 
