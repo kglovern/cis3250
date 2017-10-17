@@ -343,7 +343,7 @@ int main(int argc,char*argv[]){
 										switch(operation_number){
 												case 1:
 												  matrix_sum();
-												  break:
+												  break;
 
 												case 2:
 												  matrix_transpose();
@@ -376,7 +376,7 @@ int main(int argc,char*argv[]){
 													break;
 
 												default:
-													break:
+													break;
 												}
 												break;
 								} else{
@@ -406,20 +406,19 @@ int main(int argc,char*argv[]){
 
 						float rest = 0.00;
 						float max = 0.00;
-						float min = 0.00
+						float min = 0.00;
 						float x_bar = 0;
 						float sum=0;
 
 						float med = 0.00;
-						float mod = 0.00;
-						float count = 0.00;
+						//float mod = 0.00;
+						//float count = 0.00;
 						int temp = 0;
 
 						n=input("Enter number of term: ");
 
-						float set[n] = NULL;   \\not sure what is should be definde as since its dynamic
-						int numtemp[n] = NULL; \\not sure what is should be definde as since its dynamic
-
+						float set[n];
+						int numtemp[n];
 						for(i=0;i<n;i++){
 								set[i]=inputAry("Enter value terms",i);
 						}
