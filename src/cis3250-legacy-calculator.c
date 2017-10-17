@@ -147,39 +147,63 @@ return 0;
 }
 
 /*Kevin's Section */
-
-/**Prints a message surrounded by '=' as a banner header
-*@param header The message to be printed
-**/
+/**
+ * Prints a message surrounded by '=' as a banner header
+ * @param header The message to be printed
+ */
 void printMenuHeader ( char *header ) {
-    int messageLen = strlen ( header ) + 2;
-    int i;
+    int messageLen = 0;
+    int i = 0;
+
+    messageLen = strlen ( header ) + 2;
 
     printf ("\n");
-    for ( i = 0; i < messageLen; i ++) {
+    for ( i = 0; i < messageLen; i ++ ) {
         printf ("=");
     }
     printf ("\n %s \n", header );
-    for ( i = 0; i < messageLen; i ++) {
+    for ( i = 0; i < messageLen; i ++ ) {
         printf ("=");
     }
     printf ("\n");
 }
 
+
 /**
- *
- *
+ * Function to get user input and updates argument pointers with the value
+ * @param firstOp The first operand to get input for
+ * @param secondOp The second operand to get input for
  */
 void getUserInput ( float *firstOp, float *secondOp ) {
     *firstOp = input ("Enter value of 1st operand: ");
     *secondOp = input ("Enter value of 2nd operand: ");
 }
 
-/**Runs the regular calculator menu and branches based on user input
- **/
+
+/**
+ * Function to get two operands from the user, perform a specified operation, and return the result
+ * @param symbol The symbol of the operation being performed
+ * @param calcFP Function pointer to the operation function being performed
+ * @return Float value corresponding to the result
+ */
+float runTwoOpCalc ( char symbol, float (*calcFP) (float, float) ) {
+    float firstOp = 0;
+    float secondOp = 0;
+    float result = 0;
+
+    getUserInput ( &firstOp, &secondOp);
+    result = calcFP (firstOp, secondOp);
+
+    printf ("\nResult of %.2f %c %.2f = %.2f", firstOp, symbol, secondOp, result);
+    return result;
+}
+
+
+/**
+ * Runs the regular calculator menu and branches based on user input
+ */
 void runRegCalc () {
     int choice = 0;
-    float operandOne = 0, operandTwo = 0, result = 0;
 
     do {
         printMenuHeader ("Regular Calculator Menu");
@@ -193,35 +217,150 @@ void runRegCalc () {
         
         system ("clear");
 
-        if ( choice == 1 ) { // Addition
-            getUserInput ( &operandOne, &operandTwo);
-            result = plus ( operandOne, operandTwo );
-            printf ("\n");
-            print ( "sum of", "plus", operandOne, operandTwo, result );
-        } else if ( choice == 2 ) { // Subtraction 
-            getUserInput ( &operandOne, &operandTwo);
-            result = minus ( operandOne, operandTwo );
-            printf ("\n");
-            print ( "result of", "minus", operandOne, operandTwo, result );
-        } else if ( choice == 3 ) { // Multiplication
-            getUserInput ( &operandOne, &operandTwo);
-            result = mult ( operandOne, operandTwo );
-            printf ("\n");
-            print ( "result of", "x", operandOne, operandTwo, result );
-        } else if ( choice == 4 ) { // Division
-            getUserInput ( &operandOne, &operandTwo);
-            result = divind ( operandOne, operandTwo );
-            printf ("\n");
-            print ( "result", "/", operandOne, operandTwo, result );
+        if ( choice == 1 ) {                // Addition
+            runTwoOpCalc ( '+', plus );
+        } else if ( choice == 2 ) {         // Subtraction
+            runTwoOpCalc ( '-', minus );
+        } else if ( choice == 3 ) {         // Multiplication
+            runTwoOpCalc ( '*', mult );
+        } else if ( choice == 4 ) {         // Division
+            runTwoOpCalc ( '/', divind );
+        } 
+    } while ( choice != 0 );
+}
+
+
+/*
+ * Sub menu for matrix operations
+ */
+void matrixMenu () {
+    int choice = 0;
+
+    printMenuHeader ("Matrix Operations");
+    printf ("1.Sum of Matrices\n");
+    printf ("2.Transpose\n");
+    printf ("3.Product of Matrices\n");
+    choice = input ("Enter an operation command: ");
+
+    switch ( choice ) {
+        case 1: 
+            matrix_sum ();
+            break;
+        case 2: 
+            matrix_transpose ();
+            break;
+        case 3: 
+            matrix_product ();
+            break;
+    }
+
+}
+
+
+/**
+ * Sub menu for conversion operations
+ */
+void conversionMenu () {
+    int choice = 0;
+
+    printMenuHeader ("Conversion Menu");
+    printf ("1.Temperature(1)\n");
+    printf ("2.Time\n");
+    choice = input ("Please choose an operation number:");
+
+    switch ( choice ) {
+        case 1: 
+            temp ();
+            break;
+        case 2: 
+            time ();
+            break;
+    }
+
+}
+
+
+/**
+ * Runs the Scientific calculator menu and branches based on user input
+ */
+void runSciCalc () {
+    float choice = 0, firstOp = 0, secondOp = 0, result = 0;
+
+    do {
+        printMenuHeader ("Scientific Calculator Menu");
+        printf ("1.Power function (x^y)\n");
+        printf ("2.Factorial Series (x!)\n");
+        printf ("3.Fibonacci Series \n");
+        printf ("4.Sine (Sin x)\n");
+        printf ("5.Cosine (cos x)\n");
+        printf ("6.Tangent (Tan x)\n");
+        printf ("7.Cosec (cosec x)\n");
+        printf ("8.Sec (sec x)\n");
+        printf ("9.Cot (cot x)\n");
+        printf ("10.Matrix functions\n");
+        printf ("11.Conversion functions\n");
+        printf ("0.Back\n");
+        choice = input ("Select Menu: ");
+        system ("clear");
+
+        if ( choice == 1 ) {
+            firstOp = input ("Enter base(x): ");
+            secondOp = input ("Enter power(y): ");
+            result = powerfn ( firstOp, secondOp );
+            print ( "\nResult of", "^" , firstOp, secondOp, result);
+        } else if ( choice == 2 ) {
+            firstOp = input ("Enter numbers of term: ");
+            result = fact (firstOp);
+            spprint ( "\nFactorial of", "!" , firstOp, result );
+        } else if ( choice == 3 ) {
+            firstOp = input ("Enter numbers of term: ");
+            result = fib (firstOp);
+            spprint ( "\nFibonacci of", " ", firstOp, result );
+        } else if ( choice == 4 ) {
+            firstOp = input ("Enter your value: ");
+            result = sine (firstOp);
+            spprintf ( "\nSine of", " ", firstOp, result );
+        } else if ( choice == 5 ) {
+            firstOp = input ("Enter your value: ");
+            result = cosine (firstOp);
+            spprintf ( "\nCosine of", " ", firstOp, result );
+        } else if ( choice == 6 ) {
+            firstOp = input ("Enter your value: ");
+            secondOp = sine (firstOp);
+            result = cosine (firstOp);
+            result = secondOp / result;
+            spprintf ( "\nTangent of", " ", firstOp, result );
+        } else if ( choice == 7 ) {
+            firstOp = input ("Enter your value: ");
+            result = sine (firstOp);
+            spprintf ( "Cosec of", " ", firstOp, (1/result) );
+        } else if ( choice == 8 ) {
+            firstOp = input ("Enter your value: ");
+            result = cosine (firstOp);
+            spprintf ( "\nSec of", " ", firstOp, (1/result) );
+        } else if ( choice == 9 ) {
+            firstOp = input ("Enter your value: ");
+            secondOp = sine (firstOp);
+            result = cosine (firstOp);
+            result = secondOp / result;
+            spprintf ( "\nCot of", " ", firstOp, (1/result) );
+        } else if ( choice == 10 ) {
+            matrixMenu ();
+        } else if ( choice == 11 ) {
+            conversionMenu ();
         }
     } while ( choice != 0 );
 }
 
+
+/**
+ * Main function - menu loop for the calculator application
+ * @param argc Count of command line arguments supplied by the user
+ * @param argv Array of strings of supplied user arguments
+ * @return Integer value corresponding to program success - 0 on success
+ */
 int main ( int argc, char *argv[] ) {
-    float a, b, c;
-    float r1, r2;
-    char sym;
-    int menu, rmenu, smenu;
+    int menu = 0;
 
     do {
         printMenuHeader ("Menu");
@@ -230,139 +369,15 @@ int main ( int argc, char *argv[] ) {
         printf ("3.Acountant Calculator\n");
         printf ("4.Read Help and Notice\n");
         printf ("0.Exit\n");
-        menu = input ("Select Menu: "); // input main menu
+        menu = input ("Select Menu: ");
         system ("clear");
 
         if ( menu == 1 ) {
             runRegCalc ();
-        }
-
-        if ( menu == 2 ) {
-            do {
-                printMenuHeader ("Scientific Calculator Menu");
-                printf ("1.Power function (x^y)\n");
-                printf ("2.Factorial Series (x!)\n");
-                printf ("3.Fibonacci Series \n");
-                printf ("4.Sine (Sin x)\n");
-                printf ("5.Cosine (cos x)\n");
-                printf ("6.Tangent (Tan x)\n");
-                printf ("7.Cosec (cosec x)\n");
-                printf ("8.Sec (sec x)\n");
-                printf ("9.Cot (cot x)\n");
-                printf ("10.Matrix functions\n");
-                printf ("11.Conversion functions\n");
-                printf ("0.Back\n");
-                smenu = input ("Select Menu: ");
-                system ("clear");
-
-                if ( smenu == 1 ) {
-                    a = input ("Enter base(x): ");
-                    b = input ("Enter power(y): ");
-                    c = powerfn ( a, b );
-                    printf ("\n");
-                    print ( "result of", "^", a, b, c );
-                }
-
-                if ( smenu == 2 ) {
-                    a = input ("Enter numbers of term: ");
-                    c = fact (a);
-                    printf ("\n");
-                    spprint ( "Factorial of", "!" , a, c );
-                }
-
-                if ( smenu == 3 ) {
-                    a = input ("Enter numbers of term: ");
-                    c = fib (a);
-                    printf ("\n");
-                    spprint ( "Fibonacci of", " ", a, c );
-                }
-
-                if ( smenu == 4 ) {
-                    a = input ("Enter your value: ");
-                    c = sine (a);
-                    printf ("\n");
-                    spprintf ( "Sine of", " ", a, c );
-                }
-
-                if ( smenu == 5 ) {
-                    a = input ("Enter your value: ");
-                    c = cosine (a);
-                    printf ("\n");
-                    spprintf ( "Cosine of", " ", a, c );
-                }
-
-                if ( smenu == 6 ) {
-                    a = input ("Enter your value: ");
-                    r1 = sine (a);
-                    r2 = cosine (a);
-                    c = r1 / r2;
-                    printf ("\n");
-                    spprintf ( "Tangent of", " ", a, c );
-                }
-
-                if ( smenu == 7 ) {
-                    a = input ("Enter your value: ");
-                    c = sine (a);
-                    printf ("\n");
-                    spprintf ( "Cosec of", " ", a, (1/c) );
-                }
-
-                if ( smenu == 5 ) {
-                    a = input ("Enter your value: ");
-                    c = cosine (a);
-                    printf ("\n");
-                    spprintf ( "Sec of", " ", a, (1/c) );
-                }
-
-                if ( smenu == 8 ) {
-                    a = input ("Enter your value: ");
-                    r1 = sine (a);
-                    r2 = cosine (a);
-                    c = r1 / r2;
-                    printf ("\n");
-                    spprintf ( "Cot of", " ", a, (1/c) );
-                }
-
-
-                if ( smenu == 10 ) {
-                    int operation_number=0;
-                    
-                    printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
-                    printf("\n\tEnter an operation command:");
-                    scanf("%d",&operation_number);
-
-                    switch ( operation_number ) {
-                        case 1: 
-                            matrix_sum ();
-                            break;
-                        case 2: 
-                            matrix_transpose ();
-                            break;
-                        case 3: 
-                            matrix_product ();
-                            break;
-                    }
-                }
-
-                if ( smenu == 11 ) {
-                    int operation_number=0;
-
-                    printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
-                    printf("\n\n\n\t\tPlease choose an operation number:");
-                    scanf("%d",&operation_number);
-
-                    switch(operation_number){
-                        case 1: 
-                            temp();
-                            break;
-                        case 2: 
-                            time();
-                            break;
-                    }
-                }
-            } while ( smenu != 0 );
+        } else if ( menu == 2 ) {
+            runSciCalc ();
         }   
-/********ACTUALLY END HERE ***********/
+/******** End of Kevin's section ***********/
 if(menu==3){
 
     warp:
