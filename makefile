@@ -8,6 +8,5 @@ CFLAGS      =	-Wall -std=c99 -g
 all:
 	$(CC) $(CFLAGS) src/*.c -Iinclude -o bin/calculator
 
-
 clean:
 	rm bin/*

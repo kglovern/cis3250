@@ -21,9 +21,10 @@ To run:  Run './bin/calculator' from within the project directory after compilin
 Selecting a calculator package from the main menu will display the associated functionality.  All menu prompts assume integer input, where functionality prompts can be doubles.
 
 # Known bugs/Limitations
-- No bug fixing was done on the mathematical functions - if it was originall programmed incorrectly, it wasn't fixed
-- Menu prompts were fixed
+- No bug fixing was done on the mathematical functions - if it was originally programmed incorrectly, it wasn't fixed
+- Menu prompts were fixed to allow for proper functionality
 - Little to no validation is done on user input.  The assumption is that the user is always going to input the correct expected value, and any issues that result from them not doing that are unknown.
+- Factorial.h and Main from 436 - 512 were not refactored - as mentioned earlier in this document, the person responsible for that section is no longer a member of the course.
 
 # Original code sections as decided by committee
 
