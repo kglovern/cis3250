@@ -1,5 +1,0 @@
-1) In include/powerfunction.h
-* Created a .c file for the header file, and moved the function implementation to the .c file
-* Put the function definition in the header file
-* Included code guards in the header file
-* moved first line of doxygen comment from line 9 to line 10
