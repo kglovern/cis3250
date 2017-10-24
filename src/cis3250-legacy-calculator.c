@@ -1,152 +1,211 @@
+/**
+* 
+* MADDIE'S CHANGES BEGIN
+*
+*/
+
+/**
+* File: cis3250-legacy-calculator.c
+* 
+* Main file of legacy calculator.
+*
+* Team: Lab 1 Section 1
+* Last Edited: October 2017
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
-#define PI 3.1415926535897932384626433832795
+#include <string.h> 
+
 #include "factorial.h"
 #include "matrices.h"
 #include "powerfunction.h"
 #include "conversions.h"
-#include<string.h>
 
-FILE*help;
+#define PI 3.1415926535897932384626433832795
+
+FILE *help;
+
+float input ( char *inName ) {
+   
+    float numIn = 0.0;
+    char temp[9999];
+
+    do {
+
+    printf( "%s", inName );
+
+        if( !scanf( "%f", &numIn ) ) {
+            scanf( "%s", &temp ); //recieve temp
+            printf( "Please try again!\n" );
+        } else {
+            return numIn;
+        }
+
+    } while( 1 );	
+
+}
 
 
-float input(char*inname)
-{
-	float key;
-	char temp[9999];
+float inputAry ( char *inName, int num ) {
+
+    float numIn = 0.0;
+    char temp[9999];
+
+    do {
+
+        printf( "%s[%d]: ", inName, num + 1 );
+
+        if( !scanf( "%f", &numIn ) ) {
+            scanf( "%s", &temp );
+            printf( "Please try again!\n" );
+        } else {
+            return numIn;
+        }
+
+    } while( 1 );	
+
+}
+
+
+float plus ( float adder, float addIn ) {
+
+    float result = 0.0;
+    result = adder + addIn;
+    return result;
+
+}
+
+
+float minus ( float miner, float minIn ) {
+
+    float result = 0.0;
+    result = miner - minIn;
+    return result;
+
+}
+
+
+float mult ( float multer, float multin ) {
+
+    float result = 0.0;
+    result = multer * multin;
+    return result;
+
+}
+
+
+float divind (float divider, float dividIn ) {
+
+    float result = 0.0;
+    result = divider / dividIn;
+    return result;
+
+}
+
+
+int factorial ( int term ) {
+
+    if( term == 0 ) {
+        return 1;
+    }
+
+    return term * factorial( term-1 );
+
+}
+
+
+int fib ( int term ) {
 	
-	do{
-	printf("%s",inname);
-	 if(!scanf("%f",&key)){
-		scanf("%s",&temp);//recieve temp
-	      	printf("Please try again!\n");
-	}
-	else{
-		return key;
-	}
-	}while(1);	 
+    if( term == 1 ) {
+        return 0;
+    }
+
+    if( term == 2 ) {
+        return 1;
+    }
+
+    return fib( term-1 ) + fib( term-2 );
+
 }
 
-float inputAry(char*inname,int num)
-{
-	float key;
-	char temp[9999];
 
-	do{
-	printf("%s[%d]: ",inname,num+1);
-	 if(!scanf("%f",&key)){
-		scanf("%s",&temp);
-	      	printf("Please try again!\n");
-	}
-	else{
-		return key;
-	}
-	}while(1);	 
+float power ( float base, int pow ) {
+
+    int i = 0;
+    float mem = 1.0;
+
+    for( i=0; i<pow; i++ ) {
+        mem *= base;
+    }
+
+    return mem;
+
 }
 
-float plus(float adder,float addin)
-{
-	float result;
-	result=adder+addin;
-	return result;
-}
 
-float minus(float miner,float minin)
-{
-	float result;
-	result=miner-minin;
-	return result;
-}
-
-float mult(float multer,float multin)
-{
-	float result;
-	result=multer*multin;
-	return result;
-}
-
-float divind(float divider,float dividin)
-{
-	float result;
-	result=divider/dividin;
-	return result;
-}
-
-int factorial(int term)
-{
-
-	if(term==0){
-		return 1;
-	}
-
-	return term*factorial(term-1);
-}
-
-int fib(int term)
-{
-	if(term==1){
-		return 0;
-	}
-	if(term==2){
-		return 1;
-	}
-	return fib(term-1)+fib(term-2);
-}
-
-float power(float base,int pow)
-{
-	int i;
-	float mem=1;
-	for(i=0;i<pow;i++){
-		mem*=base;
-	}
-	return mem;
-}
-
-float sine(float radius)
-{
-	float val,sin;
-		val=radius*(PI/180);
-		sin=val-(power(val,3)/factorial(3))+(power(val,5)/factorial(5))-(power(val,7)/factorial(7));
-	return sin;
-}
-
-float cosine(float radius)
-{
-	float val,cos;
-		val=radius*(PI/180);
-		cos=1-(power(val,2)/factorial(2))+(power(val,4)/factorial(4))-(power(val,6)/factorial(6));
-	return cos;
-}
-
-int spprint(char*screen,char*sym,int ini,int res)
-{
-	printf("%s %d%s = %d\n",screen,ini,sym,res);
+float sine ( float radius ) {
 	
-return 0;
-}
+    float val = 0.0;
+    float sin = 0.0;
+	
+    val = radius * ( PI / 180 );
+    sin = val - (power( val, 3 ) / factorial(3)) + (power( val, 5 ) / factorial(5)) - (power( val, 7 ) / factorial(7));
+	
+    return sin;
 
-float spprintf(char*screen,char*sym,float ini,float res)
-{
-	printf("%s %.4f%s = %.4f\n",screen,ini,sym,res);
-
-return 0;
-}
-
-float print(char*screen,char*sym,float ini,float upt,float res)
-{
-	printf("%s %.4f %s %.4f = %.4f\n",screen,ini,sym,upt,res);
-
-return 0;
-}
-float Aryprint(char*screen,float ans)
-{
-	printf("%s : %.4f\n",screen,ans);
-
-return 0;
 }
 
 
+float cosine ( float radius ) {
+	
+    float val = 0.0;
+    float cos = 0.0;
+
+    val = radius * (PI/180);
+    cos = 1 - (power( val, 2 ) / factorial(2)) + (power( val, 4 ) / factorial(4)) - (power( val, 6 ) / factorial(6));
+	
+    return cos;
+
+}
+
+
+int spprint ( char *message, char *operator, int ini, int res ) {
+	
+    printf( "%s %d%s = %d\n", message, ini, operator, res );
+    return 0;
+
+}
+
+
+float spprintf ( char *message, char *operator, float ini, float res ) {
+	
+    printf( "%s %.4f%s = %.4f\n", message, ini, operator, res );
+    return 0;
+
+}
+
+
+float print ( char *message, char *operator, float ini, float upt, float res) {
+
+    printf( "%s %.4f %s %.4f = %.4f\n", message, ini, operator, upt, res );
+    return 0;
+
+}
+
+
+float aryPrint ( char *message, float ans ) {
+
+    printf( "%s : %.4f\n", message, ans );
+    return 0;
+    
+}
+
+/**
+* 
+* MADDIE'S CHANGES END
+*
+*/
 
 int main(int argc,char*argv[])
 {
@@ -451,27 +510,27 @@ else{
 
 		if(amenu==1){
 			printf("\n");
-			Aryprint("Max is",max);
+			aryPrint("Max is",max);
 		}
 
 		if(amenu==2){
 			printf("\n");
-			Aryprint("Min is",min);
+			aryPrint("Min is",min);
 		}
 
 		if(amenu==3){
 			printf("\n");
-			Aryprint("X-bar is",x_bar);
+			aryPrint("X-bar is",x_bar);
 		}
 
 		if(amenu==4){
 			printf("\n");
-			Aryprint("Range is",max-min);
+			aryPrint("Range is",max-min);
 		}
 
 		if(amenu==5){
 			printf("\n");
-			Aryprint("Med is",med);
+			aryPrint("Med is",med);
 		}
 
 		if(amenu==6){
@@ -510,4 +569,6 @@ else{
 
 return 0;
 }
+
+
 
