@@ -1,20 +1,23 @@
-/**
-* CIS 3250 Assignment 2: Coding conventions, code refactoring 
-* and team code review
-*
-* @Purpose: Understand and practice good coding principles
-*
-* @Team members/authors:
-* Kevin Glover-Netherton
-* Mark Ciobotaru
-* Andrew Barsoum
-* Jovana Kusic
-* Chigozie Davis
-* Nicholas Skoretz
-* Maddie Gabriel
-*
-* @Summary: The team established a team coding convention. The team split the legacy 
-* code into chunks, and divided them among the team members. Each member of the team 
-* edited and refactored their assigned code chunks in accordance with the team's coding convention.
-*
-**/
+
+# This is a test
+Kevin Glover-Netherton
+- 151 - 308 
+
+Mark Ciobotaru
+- Factorial.h, Main ( 436 - 512 )
+
+Andrew Barsoum
+- Main ( 310 - 434 )
+
+Jovana Kusic
+- Conversions.h ( 1 - 145 )
+
+Chigozie Davis
+- Powerfunction.h, conversions.h  (147 - 204 )
+- Also any documentation
+
+Nicholas Skoretz
+- Matrices.h (entire)
+
+Maddie Gabriel
+- Main (1 - 147)
