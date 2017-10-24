@@ -22,34 +22,15 @@
 
 
 //Functions
-/**
-* This function calculates and displays the sum of two matrices entered by the
-* user.
-*
-* @return void      No return, prints to stdout.
-*/
-void matrix_sum () {
+void matrix_sum ( void ) {
 
-    //Declarations
-    int i;
-    int j;
-    int matrix1Rows;
-    int matrix1Cols;
-    int matrix2Rows;
-    int matrix2Cols;
-    //float matrix1[][];
-    //float matrix2[][];
-    //float sumMatrix[][];
-
-
-    //Initializations
-    i = 0;
-    j = 0;
-    matrix1Rows = 0;
-    matrix1Cols = 0;
-    matrix2Rows = 0;
-    matrix2Cols = 0;
-
+    //Declarations & Initializations
+    int i = 0;
+    int j = 0;
+    int matrix1Rows = 0;
+    int matrix1Cols = 0;
+    int matrix2Rows = 0;
+    int matrix2Cols = 0;
 
     //Body
     printf( "Enter the number of rows of matrix 1:" );
@@ -60,7 +41,6 @@ void matrix_sum () {
     scanf( "%d", &matrix2Rows );
     printf( "Enter the number of columns of matrix 2:" );
     scanf( "%d", &matrix2Cols );
-
 
     if ( ( matrix1Rows == matrix2Rows ) && ( matrix1Cols == matrix2Cols ) ) {
         float matrix1[matrix1Rows][matrix1Cols];
@@ -74,21 +54,18 @@ void matrix_sum () {
             }
         }
 
-
         for ( i = 0; i < matrix2Rows; i++ ) {
-            printf( "Enter the members of matrix 2 row %d :", i+1 );
+            printf( "Enter the members of matrix 2 row %d :", i + 1 );
             for ( j = 0; j < matrix2Cols; j++ ) {
                 scanf( "%f", &matrix2[i][j] );
             }
         }
-
 
         for ( i = 0; i < matrix1Rows; i++ ) {
             for ( j = 0; j < matrix1Cols; j++ ) {
                 sumMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
             }
         }
-
 
         printf( "The sum of both matrices is\n:" );
         for ( j = 0; j < matrix1Cols; j++ ) {
@@ -104,34 +81,15 @@ void matrix_sum () {
 }
 
 
-/**
-* This function calculates and displays the product of two matrices entered
-* by the user.
-*
-* @return void      Output to stdout.
-*/
-void matrix_product () {
+void matrix_product ( void ) {
 
-    //Declarations
-    int i;
-    int j;
-    int matrix1Rows;
-    int matrix1Cols;
-    int matrix2Rows;
-    int matrix2Cols;
-    //float matrix1[][];
-    //float matrix2[][];
-    //float productMatrix[][];
-
-
-    //Initializations
-    i = 0;
-    j = 0;
-    matrix1Rows = 0;
-    matrix1Cols = 0;
-    matrix2Rows = 0;
-    matrix2Cols = 0;
-
+    //Declarations & Initializations
+    int i = 0;
+    int j = 0;
+    int matrix1Rows = 0;
+    int matrix1Cols = 0;
+    int matrix2Rows = 0;
+    int matrix2Cols = 0;
 
     //Body
     printf( "Enter the number of rows of matrix 1:" );
@@ -148,20 +106,18 @@ void matrix_product () {
     float productMatrix[matrix1Rows][matrix1Cols];
 
     for ( i = 0; i < matrix1Rows; i++ ) {
-        printf( "Enter the members of matrix 1 row %d :", i+1 );
+        printf( "Enter the members of matrix 1 row %d :", i + 1 );
         for ( j = 0; j < matrix1Cols; j++ ) {
             scanf( "%f", &matrix1[i][j] );
         }
     }
 
-
     for ( i = 0; i < matrix2Rows; i++ ) {
-        printf( "Enter the members of matrix 2 row %d :", i+1 );
+        printf( "Enter the members of matrix 2 row %d :", i + 1 );
         for ( j = 0; j < matrix2Cols; j++ ) {
             scanf( "%f", &matrix2[i][j] );
         }
     }
-
 
     productMatrix[i][j] = 1;
     for ( i = 0; i < matrix1Rows; i++ ) {
@@ -171,8 +127,7 @@ void matrix_product () {
         }
     }
 
-
-    printf( "The  of the matrix is\n:" );
+    printf( "The product of the matrix is\n:" );
     for ( j = 0; j < matrix1Cols; j++ ) {
         for ( i = 0; i < matrix2Rows; i++ ) {
             printf( "\t\t %.0f", matrix1[i][j] );
@@ -182,26 +137,13 @@ void matrix_product () {
 }
 
 
-/**
-* This function transposes a matrix entered by the user. That is to say, it
-* switches their row and column indexes to 'flip' the matrix.
-*
-* @return void      Prints to stdout.
-*/
 void matrix_transpose () {
-    //Declarations
-    int i;
-    int j;
-    int numOfRows;
-    int numOfCols;
 
-
-    //Initializations
-    i = 0;
-    j = 0;
-    numOfRows = 0;
-    numOfCols = 0;
-
+    //Declarations & Initializations
+    int i = 0;
+    int j = 0;
+    int numOfRows = 0;
+    int numOfCols = 0;
 
     printf( "Enter the number of rows:" );
     scanf( "%d", &numOfRows );
@@ -211,7 +153,7 @@ void matrix_transpose () {
     float transposeMatrix[numOfRows][numOfCols];
 
     for ( i = 0; i < numOfRows; i++ ) {
-        printf( "Enter the members of row %d :", i+1 );
+        printf( "Enter the members of row %d :", i + 1 );
         for ( j = 0; j < numOfCols; j++ ) {
             scanf( "%f", &transposeMatrix[i][j] );
         }

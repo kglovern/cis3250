@@ -27,8 +27,6 @@
 void matrix_sum ();
 
 
-
-
 /**
 * This function calculates and displays the product of two matrices entered
 * by the user.
@@ -36,8 +34,6 @@ void matrix_sum ();
 * @return void      Output to stdout.
 */
 void matrix_product ();
-
-
 
 
 /**

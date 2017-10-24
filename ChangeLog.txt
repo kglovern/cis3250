@@ -1,6 +1,6 @@
+==============================================================
 Changes made to 'matrices.h' on 2017-10-15 by Nicholas Skoretz
-
-
+==============================================================
 
 Ran the Vim command 'gg=G' which fixes all tabbing in the document
 
@@ -15,24 +15,52 @@ n2      matrix2Rows
 m2      matrix2Cols
 
 Changed the variable names 'a', 'b', 'c' to be descriptive based on which
-    function they were in.
+function they were in.
 
 Removed variables 'l', 'k' as they are declared and not used.
 
 Added a file comment at the top of the file detailing the name of the file,
-    date last modified, by who, a blurb about the refactoring, and a short
-    description of the contents of the file.
+date last modified, by who, a blurb about the refactoring, and a short
+description of the contents of the file.
 
 Created functions comments for the three functions.
 
 Created 'matrices.c' and moved all code (implementation of the functions) to
-	this file.
+this file.
 
 Deleted all code from 'matrices.h' file exept the function prototypes.
 
 Created header guards for the .h file.
 
 Added proper spacing between arguments and function calls, if statements,
-	for loops, and arithmetic expressions
+for loops, and arithmetic expressions
 
 Added spacing to separate code properly
+
+
+
+
+==============================================================
+Changes made to 'matrices.c' on 2017-10-24 by Nicholas Skoretz
+==============================================================
+
+Removed unused variables and commented out declarations.
+
+Changed all functions so that the Declaration and Initialization is on the
+same line.
+
+Changed all of the space inside the function blocks to one newline from two.
+
+Removed the Doxygen comments from the .c file.
+
+Put spaces between some operators.
+
+
+
+
+==============================================================
+Changes made to 'matrices.h' on 2017-10-24 by Nicholas Skoretz
+==============================================================
+
+Changed the space between blocks from four spaces to two.
+
