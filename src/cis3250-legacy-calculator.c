@@ -1,4 +1,3 @@
-
 /**
 * 
 * MADDIE'S CHANGES BEGIN
@@ -18,189 +17,15 @@
 #include <stdlib.h>
 #include <string.h> 
 
-#include "factorial.h"
 #include "matrices.h"
 #include "powerfunction.h"
 #include "conversions.h"
+#include "calcFuncs.h"
 
-#define PI 3.1415926535897932384626433832795
 
 FILE *help;
 
-float input ( char *inName ) {
-   
-    float numIn = 0.0;
-    char temp[9999];
-
-    do {
-
-    printf( "%s", inName );
-
-        if( !scanf( "%f", &numIn ) ) {
-            scanf( "%s", &temp ); //recieve temp
-            printf( "Please try again!\n" );
-        } else {
-            return numIn;
-        }
-
-    } while( 1 );	
-
-}
-
-
-float inputAry ( char *inName, int num ) {
-
-    float numIn = 0.0;
-    char temp[9999];
-
-    do {
-
-        printf( "%s[%d]: ", inName, num + 1 );
-
-        if( !scanf( "%f", &numIn ) ) {
-            scanf( "%s", &temp );
-            printf( "Please try again!\n" );
-        } else {
-            return numIn;
-        }
-
-    } while( 1 );	
-
-}
-
-
-float plus ( float adder, float addIn ) {
-
-    float result = 0.0;
-    result = adder + addIn;
-    return result;
-
-}
-
-
-float minus ( float miner, float minIn ) {
-
-    float result = 0.0;
-    result = miner - minIn;
-    return result;
-
-}
-
-
-float mult ( float multer, float multin ) {
-
-    float result = 0.0;
-    result = multer * multin;
-    return result;
-
-}
-
-
-float divind (float divider, float dividIn ) {
-
-    float result = 0.0;
-    result = divider / dividIn;
-    return result;
-
-}
-
-
-int factorial ( int term ) {
-
-    if( term == 0 ) {
-        return 1;
-    }
-
-    return term * factorial( term-1 );
-
-}
-
-
-int fib ( int term ) {
-	
-    if( term == 1 ) {
-        return 0;
-    }
-
-    if( term == 2 ) {
-        return 1;
-    }
-
-    return fib( term-1 ) + fib( term-2 );
-
-}
-
-
-float power ( float base, int pow ) {
-
-    int i = 0;
-    float mem = 1.0;
-
-    for( i=0; i<pow; i++ ) {
-        mem *= base;
-    }
-
-    return mem;
-
-}
-
-
-float sine ( float radius ) {
-	
-    float val = 0.0;
-    float sin = 0.0;
-	
-    val = radius * ( PI / 180 );
-    sin = val - (power( val, 3 ) / factorial(3)) + (power( val, 5 ) / factorial(5)) - (power( val, 7 ) / factorial(7));
-	
-    return sin;
-
-}
-
-
-float cosine ( float radius ) {
-	
-    float val = 0.0;
-    float cos = 0.0;
-
-    val = radius * (PI/180);
-    cos = 1 - (power( val, 2 ) / factorial(2)) + (power( val, 4 ) / factorial(4)) - (power( val, 6 ) / factorial(6));
-	
-    return cos;
-
-}
-
-
-int spprint ( char *message, char *operator, int ini, int res ) {
-	
-    printf( "%s %d%s = %d\n", message, ini, operator, res );
-    return 0;
-
-}
-
-
-float spprintf ( char *message, char *operator, float ini, float res ) {
-	
-    printf( "%s %.4f%s = %.4f\n", message, ini, operator, res );
-    return 0;
-
-}
-
-
-float print ( char *message, char *operator, float ini, float upt, float res) {
-
-    printf( "%s %.4f %s %.4f = %.4f\n", message, ini, operator, upt, res );
-    return 0;
-
-}
-
-
-float aryPrint ( char *message, float ans ) {
-
-    printf( "%s : %.4f\n", message, ans );
-    return 0;
-    
-}
+/* NB: Changes move d to calcFuncs.c */
 
 /**
 * 
@@ -208,225 +33,41 @@ float aryPrint ( char *message, float ans ) {
 *
 */
 
-int main(int argc,char*argv[])
-{
-	float a,b,c;
-	float r1,r2;
-	char sym;
-	int menu,rmenu,smenu;
+/*Kevin's Section */
+/* 
+ NB:  Most code here was moved to calcFuncs.h and calcFuncs.c
+ That's why this refactored lines in this file seem low for me -
+ it was the same amount as everyone else
+*/
 
+/**
+ * Main function - menu loop for the calculator application
+ * @param argc Count of command line arguments supplied by the user
+ * @param argv Array of strings of supplied user arguments
+ * @return Integer value corresponding to program success - 0 on success
+ */
+ int main ( int argc, char *argv[] ) {
+    int menu = 0;
 
-do{
-	printf("\n======\n");
-	printf("Menu\n");
-	printf("======\n");
-	printf("1.Regular Calculator\n");
-	printf("2.Scientific Calculator\n");
-	printf("3.Acountant Calculator\n");
-	printf("4.Read Help and Notice\n");
-	printf("0.Exit\n");
-	menu = input("Select Menu: ");//input main menu
-	system("clear");
+    do {
+        printMenuHeader( "Menu" );
+        printf( "1.Regular Calculator\n" );
+        printf( "2.Scientific Calculator\n" );
+        printf( "3.Acountant Calculator\n" );
+        printf( "4.Read Help and Notice\n" );
+        printf( "0.Exit\n" );
+        menu = input( "Select Menu: " );
+        system( "clear" );
 
-if(menu==1){
+        if ( menu == 1 ) {
+            runRegCalc();
+        } else if ( menu == 2 ) {
+            runSciCalc();
+        }   
+/******** End of Kevin's section ***********/
 
-do{
-	printf("\n======================\n");
-	printf("Regular Calculator Menu\n");
-	printf("=======================\n");
-	printf("1.PLUS\n");
-	printf("2.MINUS\n");
-	printf("3.MULTIPLY\n");
-	printf("4.DIVIDE\n");
-	printf("0.BACK\n");
-	rmenu = input("Select Menu: ");//input regular  menu
-	system("clear");
-
-
-	if(rmenu==1){
-		a=input("Enter value 1 st: ");
-		b=input("Enter value 2 nd: ");
-		c=plus(a,b);
-		printf("\n");
-		print("sum of","plus",a,b,c);
-	}
-
-	if(rmenu==2){
-		a=input("Enter value 1 st: ");
-		b=input("Enter value 2 nd: ");
-		c=minus(a,b);
-		printf("\n");
-		print("result of","minus",a,b,c);
-	}
-
-	if(rmenu==3){
-		a=input("Enter value 1 st: ");
-		b=input("Enter value 2 nd: ");
-		c=mult(a,b);
-		printf("\n");
-		print("result of","x",a,b,c);
-	}
-
-	if(rmenu==4){
-		a=input("Enter value 1 st: ");
-		b=input("Enter value 2 nd: ");
-		c=divind(a,b);
-		printf("\n");
-		print("result","/",a,b,c);
-	}
-
-}while(rmenu!=0);
-}
-
-if(menu==2){
-
-	do{
-		printf("\n===========================\n");
-		printf("Scientific Calculator Menu\n");
-		printf("===========================\n");
-		printf("1.Power function (x^y)\n");
-		printf("2.Factorial Series (x!)\n");
-		printf("3.Fibonacci Series \n");
-		printf("4.Sine (Sin x)\n");
-		printf("5.Cosine (cos x)\n");
-		printf("6.Tangent (Tan x)\n");
-		printf("7.Cosec (cosec x)\n");
-		printf("8.Sec (sec x)\n");
-		printf("9.Cot (cot x)\n");
-		printf("10.Matrix functions\n");
-		printf("11.Conversion functions\n");
-		printf("0.Back\n");
-		smenu = input("Select Menu: ");
-		system("clear");
-
-	if(smenu==1){
-		a=input("Enter base(x): ");
-		b=input("Enter power(y): ");
-		c=powerfn(a,b);
-		printf("\n");
-		print("result of","^",a,b,c);
-	}
-
-	if(smenu==2){
-		a=input("Enter numbers of term: ");
-		c=fact(a);
-		printf("\n");
-		spprint("Factorial of","!",a,c);
-	}
-
-	if(smenu==3){
-		a=input("Enter numbers of term: ");
-		c=fib(a);
-		printf("\n");
-		spprint("Fibonacci of"," ",a,c);
-	}
-
-	if(smenu==4){
-		a=input("Enter your value: ");
-		c=sine(a);
-		printf("\n");
-		spprintf("Sine of"," ",a,c);
-	}
-
-	if(smenu==5){
-		a=input("Enter your value: ");
-		c=cosine(a);
-		printf("\n");
-		spprintf("Cosine of"," ",a,c);
-	}
-
-	if(smenu==6){
-		a=input("Enter your value: ");
-		r1=sine(a);
-		r2=cosine(a);
-		c=r1/r2;
-		printf("\n");
-		spprintf("Tangent of"," ",a,c);
-	}
 
 // START OF REFACTORING PART ANDREW BARSOUM 0951037
-    if(smenu==7){
-        a=input("Enter your value: ");
-        c=sine(a);
-        printf("\n");
-        spprintf("Cosec of"," ",a,1/c);
-    } else{
-        printf("Cosec failed.\n");
-    }
-
-    if(smenu==8){
-        a=input("Enter your value: ");
-        c=cosine(a);
-        printf("\n");
-        spprintf("Sec of"," ",a,1/c);
-    } else{
-        printf("Sec failed.\n");
-    }
-
-    if(smenu==9){
-        a=input("Enter your value: ");
-        r1=sine(a);
-        r2=cosine(a);
-        c=r1/r2;
-        printf("\n");
-        spprintf("Cot of"," ",a,1/c);
-    } else{
-        printf("Cot failed.\n");
-    }
-
-    if(smenu==10){
-        int operation_number=0;
-        printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
-        printf("\n\tEnter an operation command:");
-        scanf("%d",&operation_number);
-
-        switch(operation_number){
-            case 1:
-                matrix_sum();
-                break;
-
-            case 2:
-                matrix_transpose();
-                break;
-
-            case 3:
-                matrix_product();
-                break;
-
-            default:
-                break;
-        }
-    } else{
-        printf("Matrix operation failed.\n");
-    }
-
-    if(smenu==11){
-        int operation_number=0;
-        printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
-        printf("\n\n\n\t\tPlease choose an operation number:");
-        scanf("%d",&operation_number);
-
-        switch(operation_number){
-            case 1:
-                temp();
-                break;
-
-            case 2:
-                time();
-                break;
-
-            default:
-                break;
-        }
-        break;
-    } else{
-    printf("Converstion failed.\n");
-    }
-
-} while(smenu!=0);
-    } else{
-        printf("Scientific calculator failed to start.\n");
-    }
 
     if(menu==3){
 
