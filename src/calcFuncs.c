@@ -30,7 +30,7 @@ float input ( char *inName ) {
      printf( "%s", inName );
  
          if( !scanf( "%f", &numIn ) ) {
-             scanf( "%s", &temp ); //recieve temp
+             scanf( "%s", temp ); //recieve temp
              printf( "Please try again!\n" );
          } else {
              return numIn;
@@ -51,7 +51,7 @@ float input ( char *inName ) {
          printf( "%s[%d]: ", inName, num + 1 );
  
          if( !scanf( "%f", &numIn ) ) {
-             scanf( "%s", &temp );
+             scanf( "%s", temp );
              printf( "Please try again!\n" );
          } else {
              return numIn;
