@@ -1,3 +1,4 @@
+
 /**
 * 
 * MADDIE'S CHANGES BEGIN
@@ -343,232 +344,272 @@ if(menu==2){
 		spprintf("Tangent of"," ",a,c);
 	}
 
-	if(smenu==7){
-		a=input("Enter your value: ");
-		c=sine(a);
-		printf("\n");
-		spprintf("Cosec of"," ",a,1/c);
-	}
+// START OF REFACTORING PART ANDREW BARSOUM 0951037
+    if(smenu==7){
+        a=input("Enter your value: ");
+        c=sine(a);
+        printf("\n");
+        spprintf("Cosec of"," ",a,1/c);
+    } else{
+        printf("Cosec failed.\n");
+    }
 
-	if(smenu==5){
-		a=input("Enter your value: ");
-		c=cosine(a);
-		printf("\n");
-		spprintf("Sec of"," ",a,1/c);
-	}
+    if(smenu==8){
+        a=input("Enter your value: ");
+        c=cosine(a);
+        printf("\n");
+        spprintf("Sec of"," ",a,1/c);
+    } else{
+        printf("Sec failed.\n");
+    }
 
-	if(smenu==8){
-		a=input("Enter your value: ");
-		r1=sine(a);
-		r2=cosine(a);
-		c=r1/r2;
-		printf("\n");
-		spprintf("Cot of"," ",a,1/c);
-	}
+    if(smenu==9){
+        a=input("Enter your value: ");
+        r1=sine(a);
+        r2=cosine(a);
+        c=r1/r2;
+        printf("\n");
+        spprintf("Cot of"," ",a,1/c);
+    } else{
+        printf("Cot failed.\n");
+    }
 
-	if(smenu==10){
-		int operation_number=0;
-		       printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
-       printf("\n\tEnter an operation command:");
-       scanf("%d",&operation_number);
+    if(smenu==10){
+        int operation_number=0;
+        printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
+        printf("\n\tEnter an operation command:");
+        scanf("%d",&operation_number);
 
-      switch(operation_number){
-       case 1: matrix_sum();break;
-       case 2: matrix_transpose();break;
-       case 3: matrix_product();break;
-       }
-	}
+        switch(operation_number){
+            case 1:
+                matrix_sum();
+                break;
 
-	if(smenu==11){
-		int operation_number=0;
-		        printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
+            case 2:
+                matrix_transpose();
+                break;
+
+            case 3:
+                matrix_product();
+                break;
+
+            default:
+                break;
+        }
+    } else{
+        printf("Matrix operation failed.\n");
+    }
+
+    if(smenu==11){
+        int operation_number=0;
+        printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
         printf("\n\n\n\t\tPlease choose an operation number:");
         scanf("%d",&operation_number);
 
         switch(operation_number){
-            case 1: temp();break;
-            case 2: time();break;
+            case 1:
+                temp();
+                break;
+
+            case 2:
+                time();
+                break;
+
+            default:
+                break;
         }
         break;
+    } else{
+    printf("Converstion failed.\n");
+    }
 
-	}
+} while(smenu!=0);
+    } else{
+        printf("Scientific calculator failed to start.\n");
+    }
 
+    if(menu==3){
 
+        warp:
 
-}while(smenu!=0);
-}
+        //system("clear");
+        printf("\n===========================\n");
+        printf("Accountant Calculator Menu\n");
+        printf("===========================\n");
+        printf("Please set value first\n");
+        printf("\n");
 
-if(menu==3){
+        int n = 0;
+        int i = 0;
+        int j = 0;
+        int amenu = 0;
 
-	warp:
+        float rest = 0.00;
+        float max = 0.00;
+        float min = 0.00;
+        float x_bar = 0;
+        float sum=0;
+    // END OF REFACTORING ANDREW BARSOUM 0951037
+						float med = 0.00;
+						//float mod = 0.00;
+						//float count = 0.00;
+						int temp = 0;
 
-		//system("clear");
-		printf("\n===========================\n");
-		printf("Accountant Calculator Menu\n");
-		printf("===========================\n");
-		printf("Please set value first\n");
-		printf("\n");
+						n=input("Enter number of term: ");
 
-	int n,i,j,amenu;
-	float rest,max,min,x_bar=0,sum=0;
-	float med,mod,count;
-	int temp;
+						float set[n];
+						int numtemp[n];
+						for(i=0;i<n;i++){
+								set[i]=inputAry("Enter value terms",i);
+						}
 
-		n=input("Enter number of term: ");
+						for(i=0;i<n;i++){
+								for(j=0;j<=i;j++){
+										if(set[j]>set[i]){
+												rest=set[j];
+												set[j]=set[i];
+												set[i]=rest;
+										} else{
+												printf("Operation Failed.\n");
+										}
+								}
+						}
 
-	float set[n];
-	int numtemp[n];
+						min = set[0];
+						max = set[n-1];
 
-	 for(i=0;i<n;i++){
-		set[i]=inputAry("Enter value terms",i);
-	}
+						for(i=0;i<n;i++){
+								sum+=set[i];
+						}
+						x_bar=(sum/n);
 
-	 for(i=0;i<n;i++){
-	 	 for(j=0;j<=i;j++){
-     			 if(set[j]>set[i]){
-				rest=set[j];
-				set[j]=set[i];
-				set[i]=rest;
- 			 }
-  		}
-  	}
+						if((n%2)!=0){
+								med=set[((n+1)/2)-1];
+						} else{
+								med=(set[((n+1)/2)]+set[((n+1)/2)-1])/2;
+						}
 
-min = set[0];
-max = set[n-1];
+						for(i=0;i<n;i++){
+								numtemp[i]=0;
+						}
 
-for(i=0;i<n;i++){
-	sum+=set[i];
-}
-x_bar=(sum/n);
+						for(i=0;i<n;i++){
+								temp=set[i];
+								for(j=i;j<n;j++){
+										if(set[j]==temp){
+												numtemp[i]++;
+										} else {
+												printf("Operation failed.\n");
+										}
+								}
+						}
 
-if((n%2)!=0){
-	med=set[((n+1)/2)-1];
-}
-else{
-	med=(set[((n+1)/2)]+set[((n+1)/2)-1])/2;
-}
+						temp=numtemp[0];
 
-for(i=0;i<n;i++){
-	numtemp[i]=0;
-}
-for(i=0;i<n;i++){
-	temp=set[i];
-	for(j=i;j<n;j++){
-	if(set[j]==temp){
-		numtemp[i]++;
-	}
-	}
-}
+						for(i=1;i<n;i++){
+								if(numtemp[i]>temp){
+										temp = numtemp[i];
+								}
+						}
 
-temp=numtemp[0];
-for(i=1;i<n;i++){
-	if(numtemp[i]>temp){
-		temp = numtemp[i];
-	}
-}
+						if(i==999){//Always False If
 
-if(i==999){//Always False If
+								warp1://Warp form menu
+								j=0;
 
-warp1://Warp form menu
-j=0;
+								for(i=0;i<n;i++){
+										if(numtemp[i]==temp){
+												j++;
+										}
+								}
 
-for(i=0;i<n;i++){
-	if(numtemp[i]==temp){
-		j++;
-	}
-}
+								if(j==1){
+										for(i=0;i<n;i++){
+												if(numtemp[i]==temp){
+														printf("%.4f\n",set[i]);
+												}
+										}
+								}else{
+										printf("Not have mode value\n");
+								}
 
-if(j==1){
-	for(i=0;i<n;i++){
-	if(numtemp[i]==temp){
-		printf("%.4f\n",set[i]);
-	}
-	}
-}
+						}
 
-else{
-	printf("Not have mode value\n");	
-}
+						do{
+								printf("\n===========================\n");
+								printf("Accountant Calculator Menu\n");
+								printf("===========================\n");
+								printf("1.Show max\n");
+								printf("2.Show min\n");
+								printf("3.Show x-bar\n");
+								printf("4.Show range\n");
+								printf("5.Show Med\n");
+								printf("6.Show Mode\n");
+								printf("7.Show value(sort)\n");
+								printf("8.Set new value\n");
+								printf("0.Back\n");
+								amenu = input("Select Menu: ");//input acountant  menu
+								system("clear");
 
-}
+								if(amenu==1){
+										printf("\n");
+										aryPrint("Max is",max);
+								}
 
-	 do{
-		printf("\n===========================\n");
-		printf("Accountant Calculator Menu\n");
-		printf("===========================\n");
-		printf("1.Show max\n");
-		printf("2.Show min\n");
-		printf("3.Show x-bar\n");
-		printf("4.Show range\n");
-		printf("5.Show Med\n");
-		printf("6.Show Mode\n");
-		printf("7.Show value(sort)\n");
-		printf("8.Set new value\n");
-		printf("0.Back\n");
-		amenu = input("Select Menu: ");//input acountant  menu
-		system("clear");
+								if(amenu==2){
+										printf("\n");
+										aryPrint("Min is",min);
+								}
 
-		if(amenu==1){
-			printf("\n");
-			aryPrint("Max is",max);
+								if(amenu==3){
+										printf("\n");
+										aryPrint("X-bar is",x_bar);
+								}
+
+								if(amenu==4){
+										printf("\n");
+										aryPrint("Range is",max-min);
+								}
+
+								if(amenu==5){
+										printf("\n");
+										aryPrint("Med is",med);
+								}
+
+								if(amenu==6){
+										printf("\n");
+										printf("Mode is: ");
+										goto warp1;
+								}
+
+								if(amenu==7){
+										printf("\n");
+										printf("Set of number is(sort): ");
+										for(i=0;i<n;i++){
+												printf("%.3f ",set[i]);
+										}
+								}
+
+								if(amenu==8){
+										goto warp;
+								}
+
+						}while(amenu!=0);
+				}
+
+				if(menu==4){
+						char text;
+
+						help = fopen("User_helping.txt","r");
+
+						while((text=fgetc(help))!=EOF){
+								fprintf(stdout,"%c",text);
+						}
+
+						fclose(help);
+						}
+				}while(menu!=0);
+
+		return 0;
 		}
-
-		if(amenu==2){
-			printf("\n");
-			aryPrint("Min is",min);
-		}
-
-		if(amenu==3){
-			printf("\n");
-			aryPrint("X-bar is",x_bar);
-		}
-
-		if(amenu==4){
-			printf("\n");
-			aryPrint("Range is",max-min);
-		}
-
-		if(amenu==5){
-			printf("\n");
-			aryPrint("Med is",med);
-		}
-
-		if(amenu==6){
-			printf("\n");
-			printf("Mode is: ");
-			goto warp1;
-		}
-
-		if(amenu==7){
-			printf("\n");
-			printf("Set of number is(sort): ");
-			for(i=0;i<n;i++){
-			printf("%.3f ",set[i]);
-			}
-		}
-
-		if(amenu==8){
-			goto warp;
-		}
-
-		}while(amenu!=0);
-	}
-
-	if(menu==4){
-		char text;
-
-			help = fopen("User_helping.txt","r");
-		
-			while((text=fgetc(help))!=EOF){
-				fprintf(stdout,"%c",text);
-			}
-
-			fclose(help);
-	}
-}while(menu!=0);
-
-return 0;
-}
-
-
 
