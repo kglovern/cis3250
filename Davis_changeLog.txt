@@ -1,0 +1,28 @@
+1) In include/powerfunction.h
+* Violation: Function implementation was in the header file
+  Resolution: Created a .c file for the header file, and moved the function implementation to the .c file
+
+* Violation: No function definition in the header file
+  Resolution: Put the function definition in the header file
+
+* Violation: No code guards in header file
+  Resolution: Included code guards in the header file
+
+* Violation: (line 9) first line of Doxygen comment was on line with two asterisks
+  Resolution: moved first line of doxygen comment from line 9 to line 10
+
+* Violation: (Entire document) used tabs instead of spaces
+  Resolution: changed tabs to 4 spaces
+
+2) In include/conversions.h
+* Violation: (Line 156 and line 157)improper initialization of variables of type double
+  Resolution: initialized vsrisbles of type double to 0.0
+
+* Violation: (Lines 150, 167) no spaces between parentheses and curly brackets
+  Resolution: added a space between parentheses and curly brackets
+
+* Violation: (Lines 190, 194) no space before closing bracket
+  Resolution: added a space before the closing bracket
+
+* Violation: (Line 214) no space between the arguments and brackets in printf() function
+  Resolution: added spaces between the printf() arguments and brackets
