@@ -17,10 +17,7 @@ void time ( void ){
 
     /*Menu options printed*/
     printf( "\n\n\n\t\tConvert from (seconds) to: " );
-    printf( "\n\t\tSeconds(1)\t\tMinutes(2)\t\tHours(3)\t\tDays(4)
-        \n\n\n\t\tWeeks(5)\t\tMonths(6)\t\tYears(7)\t\tDecades(8)
-        \n\n\n\t\tCenturies(9)\t\tMilleniums(10)\t\tLight Years(11)
-        \t\tGenerations(12):" );
+    printf( "\n\t\tSeconds(1)\t\tMinutes(2)\t\tHours(3)\t\tDays(4)\n\n\n\t\tWeeks(5)\t\tMonths(6)\t\tYears(7)\t\tDecades(8)\n\n\n\t\tCenturies(9)\t\tMilleniums(10)\t\tLight Years(11)\t\tGenerations(12):" );
     printf( "\n\n\n\t\tConvert to (number):" );
     scanf( "%d", &to );
  

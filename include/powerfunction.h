@@ -1,5 +1,5 @@
 #ifndef _POWERFUNCTION_
-#endif _POWERFUNCTION_
+#define _POWERFUNCTION_
 
 /**
 * @file conversions.h
