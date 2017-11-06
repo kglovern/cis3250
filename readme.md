@@ -14,6 +14,8 @@ The application has several different calculator packages, such as regular, scie
 
 # User Guide
 
+** MAKE SURE YOU HAVE A BIN DIRECTORY - run "mkdir bin" if you don't otherwise it won't compile  **
+
 To compile:  Run "make" will generate a binary file named "calculator" in the "bin/" directory.
 
 To run:  Run './bin/calculator' from within the project directory after compiling.
