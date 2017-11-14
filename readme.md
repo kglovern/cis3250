@@ -1,5 +1,9 @@
+# NOTE FOR THOSE REVIEWING CODE
+Lower section of main is NOT refactored due to a team member withdrawing from the course.
+Please don't choose that section for your review.
+
 # Calculator Application - CIS 3250 Project
-Andrew Barsoum, Chigozie Davis, Maddie Gabriel, Kevin Glover-Netherton, Jovana Kusic, Nicholas Skoretz
+*Andrew Barsoum, Chigozie Davis, Maddie Gabriel, Kevin Glover-Netherton, Jovana Kusic, Nicholas Skoretz*
 
 This repository contains the refactored and unified Calculator application codebase.  The code has gone through 2 separate refactoring and review sessions, and been continuously tested throughout the process.
 

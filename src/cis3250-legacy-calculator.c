@@ -25,7 +25,7 @@
 
 FILE *help;
 
-/* NB: Changes move d to calcFuncs.c */
+/* NB: Changes moved to calcFuncs.c */
 
 /**
 * 
